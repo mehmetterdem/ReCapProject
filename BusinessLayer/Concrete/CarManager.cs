@@ -17,14 +17,19 @@ namespace BusinessLayer.Concrete
         {
             _carDal = carDal;
         }
-        
+
         public void Add(Car car)
         {
-            
-            if (car.Description.Length>=2&&car.DailyPrice>0)
+
+            if (car.Description.Length >= 2 && car.DailyPrice > 0)
             {
                 _carDal.Add(car);
             }
+        }
+
+        public void Delete(Car car)
+        {
+            _carDal.Add(car);
         }
 
         public List<Car> GetAll()
@@ -40,6 +45,11 @@ namespace BusinessLayer.Concrete
         public List<Car> GetCarsByColorId(int id)
         {
             return _carDal.GetAll(x => x.ColorId == id).ToList();
+        }
+
+        public void Update(Car car)
+        {
+            _carDal.Update(car);
         }
     }
 }

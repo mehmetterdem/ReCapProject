@@ -1,6 +1,6 @@
-﻿using System;
+﻿using EntityLayer.Concrete;
+using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,9 +9,9 @@ namespace BusinessLayer.Abstract
 {
     public interface IColorService
     {
-        void Add(Color car);
-        void Delete(Color car);
-        void Update(Color car);
-        List<Color> GetAll();
+        void Add(CarColor car);
+        void Delete(CarColor car);
+        void Update(CarColor car);
+        List<CarColor> GetAll();
     }
 }

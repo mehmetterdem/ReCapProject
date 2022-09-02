@@ -16,7 +16,18 @@ namespace ConsoleUI
             {
                 Console.WriteLine(item.Description);
             }
-           
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
+            //brandManager.Add(new Brand { BrandName = "Renault" });
+            foreach (var item in brandManager.GetAll())
+            {
+                Console.WriteLine(item.BrandName);
+            }
+            ColorManager colorManager = new ColorManager(new EfColorDal());
+            colorManager.Add(new CarColor { ColorName = "Turuncu" });
+            foreach (var item in colorManager.GetAll())
+            {
+                Console.WriteLine(item.ColorName);
+            }
         }
     }
 }

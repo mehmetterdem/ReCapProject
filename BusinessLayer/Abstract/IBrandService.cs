@@ -13,5 +13,6 @@ namespace BusinessLayer.Abstract
         void Delete(Brand car);
         void Update(Brand car);
         List<Brand> GetAll();
+        
     }
 }

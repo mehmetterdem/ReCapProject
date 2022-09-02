@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -10,24 +11,41 @@ namespace BusinessLayer.Concrete
 {
     public class BrandManager : IBrandService
     {
-        public void Add(Brand car)
+        IBrandDal _brandDal;
+        public BrandManager(IBrandDal brandDal)
         {
-            throw new NotImplementedException();
+            _brandDal = brandDal;
         }
 
-        public void Delete(Brand car)
+        public void Add(Brand brand)
         {
-            throw new NotImplementedException();
+            if (brand.BrandName.Length >= 2)
+            {
+                _brandDal.Add(brand);
+            }
+            else
+            {
+                throw new Exception("Marka ismi 2 karakterden az olamaz");
+            }
+
+
         }
 
-        public List<Car> GetAll()
+        public void Delete(Brand brand)
         {
-            throw new NotImplementedException();
+            _brandDal.Delete(brand);
         }
 
-        public void Update(Brand car)
+        public List<Brand> GetAll()
         {
-            throw new NotImplementedException();
+            return _brandDal.GetAll();
         }
+
+        public void Update(Brand brand)
+        {
+            _brandDal.Update(brand);
+        }
+
+
     }
 }

@@ -13,7 +13,7 @@ namespace DataAccessLayer.Concrete.EntityFramework
 {
     public class EfColorDal : IColorDal
     {
-        public void Add(Color entity)
+        public void Add(CarColor entity)
         {
             using (RentCarDbContext context = new RentCarDbContext())
             {
@@ -23,7 +23,7 @@ namespace DataAccessLayer.Concrete.EntityFramework
             }
         }
 
-        public void Delete(Color entity)
+        public void Delete(CarColor entity)
         {
             using (RentCarDbContext context = new RentCarDbContext())
             {
@@ -33,23 +33,23 @@ namespace DataAccessLayer.Concrete.EntityFramework
             }
         }
 
-        public List<Color> GetAll(Expression<Func<Color, bool>> filter = null)
+        public List<CarColor> GetAll(Expression<Func<CarColor, bool>> filter = null)
         {
             using (RentCarDbContext context = new RentCarDbContext())
             {
-                return filter == null ? context.Set<Color>().ToList() : context.Set<Color>().Where(filter).ToList();
+                return filter == null ? context.Set<CarColor>().ToList() : context.Set<CarColor>().Where(filter).ToList();
             }
         }
 
-        public Color Get(Expression<Func<Color, bool>> filter)
+        public CarColor Get(Expression<Func<CarColor, bool>> filter)
         {
             using (RentCarDbContext context = new RentCarDbContext())
             {
-               return  context.Set<Color>().Where(filter).FirstOrDefault();
+               return  context.Set<CarColor>().Where(filter).FirstOrDefault();
             }
         }
 
-        public void Update(Color entity)
+        public void Update(CarColor entity)
         {
             using (RentCarDbContext context = new RentCarDbContext())
             {

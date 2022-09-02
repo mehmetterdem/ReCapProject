@@ -17,6 +17,7 @@ namespace DataAccessLayer.Concrete.EntityFramework
         {
             using (RentCarDbContext context = new RentCarDbContext())
             {
+
                 var addedEntity = context.Entry(entity);
                 addedEntity.State = EntityState.Added;
                 context.SaveChanges();
@@ -59,6 +60,6 @@ namespace DataAccessLayer.Concrete.EntityFramework
             }
         }
 
-   
+
     }
 }

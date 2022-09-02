@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Abstract
 {
-    public interface IColorDal:IEntityRepository<Color>
+    public interface IColorDal:IEntityRepository<CarColor>
     {
      
     }

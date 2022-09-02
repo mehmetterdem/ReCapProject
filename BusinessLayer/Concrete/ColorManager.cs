@@ -1,4 +1,6 @@
 ﻿using BusinessLayer.Abstract;
+using DataAccessLayer.Abstract;
+using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -9,25 +11,32 @@ using System.Threading.Tasks;
 namespace BusinessLayer.Concrete
 {
     public class ColorManager : IColorService
+
     {
-        public void Add(Color car)
+        IColorDal _colorDal;
+        public ColorManager(IColorDal colorDal)
         {
-            throw new NotImplementedException();
+            _colorDal = colorDal;
         }
 
-        public void Delete(Color car)
+        public void Add(CarColor color)
         {
-            throw new NotImplementedException();
+            _colorDal.Add(color);
         }
 
-        public List<Color> GetAll()
+        public void Delete(CarColor color)
         {
-            throw new NotImplementedException();
+            _colorDal.Delete(color);
         }
 
-        public void Update(Color car)
+        public List<CarColor> GetAll()
         {
-            throw new NotImplementedException();
+            return _colorDal.GetAll();
+        }
+
+        public void Update(CarColor color)
+        {
+            _colorDal.Update(color);
         }
     }
 }

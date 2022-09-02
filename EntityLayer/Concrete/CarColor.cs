@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EntityLayer.Concrete
 {
-    public class Color:IEntity
+    public class CarColor:IEntity
     {
         public int Id { get; set; }
         public string ColorName { get; set; }
