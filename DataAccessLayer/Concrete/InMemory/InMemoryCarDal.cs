@@ -1,5 +1,6 @@
 ﻿using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
+using EntityLayer.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,6 +68,11 @@ namespace DataAccessLayer.Concrete.InMemory
             UpdateToCar.ColorId = car.ColorId;
             UpdateToCar.DailyPrice = car.DailyPrice;
             UpdateToCar.Description = car.Description;
+        }
+
+        public List<CarDetailDto> GetCarDetails()
+        {
+            throw new NotImplementedException();
         }
     }
 }

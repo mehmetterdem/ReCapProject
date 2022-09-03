@@ -5,11 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Abstract\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\CoreLayer\CoreLayer.csproj" />
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
+    <ProjectReference Include="..\EntityLayer\EntityLayer.csproj" />
   </ItemGroup>
 
 </Project>

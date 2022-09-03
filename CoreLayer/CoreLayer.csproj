@@ -5,11 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Abstract\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\CoreLayer\CoreLayer.csproj" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.17" />
   </ItemGroup>
 
 </Project>
