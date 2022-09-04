@@ -1,4 +1,5 @@
-﻿using EntityLayer.Concrete;
+﻿using CoreLayer.Utilities.Results;
+using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,9 @@ namespace BusinessLayer.Abstract
 {
     public interface IColorService
     {
-        void Add(CarColor car);
-        void Delete(CarColor car);
-        void Update(CarColor car);
-        List<CarColor> GetAll();
+        IResult Add(CarColor car);
+        IResult Delete(CarColor car);
+        IResult Update(CarColor car);
+        IDataResult<List<CarColor>> GetAll();
     }
 }

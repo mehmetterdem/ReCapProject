@@ -1,4 +1,6 @@
 ﻿using BusinessLayer.Abstract;
+using BusinessLayer.Constant;
+using CoreLayer.Utilities.Results;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
 using EntityLayer.DTOs;
@@ -7,6 +9,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+
+
+
+
 
 namespace BusinessLayer.Concrete
 {
@@ -19,43 +26,48 @@ namespace BusinessLayer.Concrete
             _carDal = carDal;
         }
 
-        public void Add(Car car)
+        public Result Add(Car car)
         {
 
-            if (car.Description.Length >= 2 && car.DailyPrice > 0)
+            if (car.Description.Length < 2 && car.DailyPrice < 1)
             {
-                _carDal.Add(car);
+                return new ErrorResult(Messages.ProductError);
             }
+            _carDal.Add(car);
+            return new SuccessResult(Messages.ProductAdded);
+
         }
 
-        public void Delete(Car car)
+        public IResult Delete(Car car)
         {
             _carDal.Add(car);
+            return new SuccessResult(Messages.ProductDeleted);
         }
 
-        public List<Car> GetAll()
+        public IDataResult<List<Car>> GetAll()
         {
-            return _carDal.GetAll();
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(),Messages.ProductListed);
         }
 
-        public List<CarDetailDto> GetCarDetails()
+        public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
-            return _carDal.GetCarDetails();
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(),Messages.ProductListed);
         }
 
-        public List<Car> GetCarsByBrandId(int id)
+        public IDataResult<List<Car>> GetCarsByBrandId(int id)
         {
-            return _carDal.GetAll(x => x.BrandId == id).ToList();
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(x => x.BrandId == id).ToList(),Messages.ProductListed);
         }
 
-        public List<Car> GetCarsByColorId(int id)
+        public IDataResult<List<Car>> GetCarsByColorId(int id)
         {
-            return _carDal.GetAll(x => x.ColorId == id).ToList();
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(x => x.ColorId == id).ToList(),Messages.ProductListed);
         }
 
-        public void Update(Car car)
+        public IResult Update(Car car)
         {
             _carDal.Update(car);
+            return new SuccessResult(Messages.ProductUpdated);
         }
     }
 }

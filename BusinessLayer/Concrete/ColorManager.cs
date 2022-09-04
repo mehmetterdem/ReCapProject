@@ -1,4 +1,6 @@
 ﻿using BusinessLayer.Abstract;
+using BusinessLayer.Constant;
+using CoreLayer.Utilities.Results;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
 using System;
@@ -19,24 +21,28 @@ namespace BusinessLayer.Concrete
             _colorDal = colorDal;
         }
 
-        public void Add(CarColor color)
+        public IResult Add(CarColor color)
         {
             _colorDal.Add(color);
+            return new SuccessResult(Messages.ProductAdded);
         }
 
-        public void Delete(CarColor color)
+        public IResult Delete(CarColor color)
         {
             _colorDal.Delete(color);
+            return new SuccessResult(Messages.ProductDeleted);
         }
 
-        public List<CarColor> GetAll()
+        public IDataResult<List<CarColor>> GetAll()
         {
-            return _colorDal.GetAll();
+            return new SuccessDataResult<List<CarColor>>(_colorDal.GetAll(), Messages.ProductListed);
         }
 
-        public void Update(CarColor color)
+        public IResult Update(CarColor color)
         {
             _colorDal.Update(color);
+            return new SuccessResult(Messages.ProductUpdated);
         }
     }
 }
+

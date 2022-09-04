@@ -1,4 +1,6 @@
 ﻿using BusinessLayer.Abstract;
+using BusinessLayer.Constant;
+using CoreLayer.Utilities.Results;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
 using System;
@@ -17,33 +19,33 @@ namespace BusinessLayer.Concrete
             _brandDal = brandDal;
         }
 
-        public void Add(Brand brand)
+        public IResult Add(Brand brand)
         {
-            if (brand.BrandName.Length >= 2)
+            if (brand.BrandName.Length<2)
             {
-                _brandDal.Add(brand);
+                return new ErrorResult(" ");
             }
-            else
-            {
-                throw new Exception("Marka ismi 2 karakterden az olamaz");
-            }
-
+            _brandDal.Add(brand);
+            return new SuccessResult(Messages.ProductAdded);
 
         }
 
-        public void Delete(Brand brand)
+        public IResult Delete(Brand brand)
         {
             _brandDal.Delete(brand);
+            return new SuccessResult(Messages.ProductDeleted);
         }
 
-        public List<Brand> GetAll()
+        public IDataResult<List<Brand>> GetAll()
         {
-            return _brandDal.GetAll();
+
+            return new SuccessDataResult<List<Brand>>(_brandDal.GetAll(),Messages.ProductListed);
         }
 
-        public void Update(Brand brand)
+        public IResult Update(Brand brand)
         {
             _brandDal.Update(brand);
+            return new SuccessResult(Messages.ProductUpdated);
         }
 
 
