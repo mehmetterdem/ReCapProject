@@ -40,7 +40,7 @@ namespace BusinessLayer.Concrete
 
         public IResult Delete(Car car)
         {
-            _carDal.Add(car);
+            _carDal.Delete(car);
             return new SuccessResult(Messages.ProductDeleted);
         }
 
