@@ -1,9 +1,13 @@
 ﻿using BusinessLayer.Abstract;
 using BusinessLayer.Constant;
+using BusinessLayer.ValidationRules.FluentValidation;
+using CoreLayer.Aspects.Autofac.Validation;
+using CoreLayer.CrossCuttingConsern.Validation;
 using CoreLayer.Utilities.Results;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
 using EntityLayer.DTOs;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,13 +30,11 @@ namespace BusinessLayer.Concrete
             _carDal = carDal;
         }
 
+        [ValidationAspect(typeof(CarValidator))]
         public Result Add(Car car)
         {
 
-            if (car.Description.Length < 2 && car.DailyPrice < 1)
-            {
-                return new ErrorResult(Messages.ProductError);
-            }
+            ValidationTool.Validate(new CarValidator(), car);
             _carDal.Add(car);
             return new SuccessResult(Messages.ProductAdded);
 
