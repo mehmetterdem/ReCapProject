@@ -26,5 +26,9 @@ namespace BusinessLayer.Constant
         public static string RentalListed = "Kiralama Listelendi";
         public static string RentalUpdated = "Kiralama Güncellendi";
         public static string RentalDeleted = "Kiralama Silindi";
+        internal static string CarImageAdded="Arac Fotoğrafı Eklendi";
+        internal static string ImageDeleted="Fotoğraf Silindi";
+        internal static string CarImagesListed="Fotoğraflar Listelendi";
+        internal static string ImageUpdated="Fotoğraf Güncellendi";
     }
 }
