@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Concrete;
+using CoreLayer.Entities.Concrete;
 using DataAccessLayer.Concrete.Context;
 using DataAccessLayer.Concrete.EntityFramework;
 using DataAccessLayer.Concrete.InMemory;

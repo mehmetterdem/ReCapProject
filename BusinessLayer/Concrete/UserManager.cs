@@ -1,5 +1,6 @@
 ﻿using BusinessLayer.Abstract;
 using BusinessLayer.Constant;
+using CoreLayer.Entities.Concrete;
 using CoreLayer.Utilities.Results;
 using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
@@ -23,8 +24,8 @@ namespace BusinessLayer.Concrete
         public IResult Add(User user)
         {
             _userDal.Add(user);
-          return new SuccessResult(Messages.UserAdded);
-            
+            return new SuccessResult(Messages.UserAdded);
+
         }
 
         public IResult Delete(User user)
@@ -42,6 +43,14 @@ namespace BusinessLayer.Concrete
         {
             _userDal.Update(user);
             return new SuccessResult(Messages.UserUpdated);
+        }
+        public List<OperationClaim> GetClaims(User user)
+        {
+            return _userDal.GetClaims(user);
+        }
+        public User GetByMail(string email)
+        {
+            return _userDal.Get(u => u.Email == email);
         }
     }
 }

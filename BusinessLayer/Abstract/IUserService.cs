@@ -1,4 +1,5 @@
-﻿using CoreLayer.Utilities.Results;
+﻿using CoreLayer.Entities.Concrete;
+using CoreLayer.Utilities.Results;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
@@ -14,5 +15,9 @@ namespace BusinessLayer.Abstract
         IResult Delete(User user);
         IResult Update(User user);
         IDataResult<List<User>> GetAll();
+
+        List<OperationClaim> GetClaims(User user);
+        User GetByMail(string email);
+
     }
 }

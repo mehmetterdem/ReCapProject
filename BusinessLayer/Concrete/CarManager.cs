@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Abstract;
+using BusinessLayer.BusinessAspect.Autofac;
 using BusinessLayer.Constant;
 using BusinessLayer.ValidationRules.FluentValidation;
 using CoreLayer.Aspects.Autofac.Validation;
@@ -30,6 +31,7 @@ namespace BusinessLayer.Concrete
             _carDal = carDal;
         }
 
+        [SecuredOperation("Car.Add,Admin")]
         [ValidationAspect(typeof(CarValidator))]
         public Result Add(Car car)
         {
